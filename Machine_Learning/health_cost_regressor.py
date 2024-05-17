@@ -23,5 +23,6 @@ param_grid = {'n_estimators': [100, 200, 500], 'min_samples_leaf': [1, 2, 3, 4],
 regressor = RandomForestRegressor()
 grid_search = GridSearchCV(regressor, param_grid=param_grid, scoring='neg_mean_absolute_error', verbose=3, n_jobs=-1)
 grid_search.fit(x_train, y_train,)
+print(grid_search.best_params_)
 predictions = grid_search.predict(x_test)
 print(f'MAE should be below 3500, model achieved: {round(mean_absolute_error(y_test, predictions))}')
